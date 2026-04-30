@@ -48,7 +48,7 @@ def register():
         db.commit()
         return "Cont creat cu succes! <a href='/'>Login</a>"
     except Exception as e:
-        return f"Eroare DB: {str(e)}" # Information Disclosure (Stack Trace)
+        return f"Eroare DB: {str(e)}" 
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -77,7 +77,6 @@ def logout():
     resp.delete_cookie('user_role')
     return resp
 
-# --- VULNERABILITATE 4.6: Token predictibil și reutilizabil ---
 @app.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
     if request.method == 'POST':
